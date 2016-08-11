@@ -1,5 +1,46 @@
-.DS_Store
-spec/example_input/tmp
+.bundle/
+.yardoc
+Gemfile.lock
+_yardoc/
+coverage/
+doc/
+pkg/
+spec/reports/
+tmp/
+
+# Ignore IDE
 .idea/
+
+# Ignore bundler config
+.bundle
+
+#mac os
+.DS_Store
+._.DS_Store
+
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+spec/example_input/tmp
 docx_templater*gem
 Gemfile.lock
+~*.docx
+
+
+*.swo
+*.swp
+
+**/*.swo
+**/*.swp
+
+*.gem
+
+# 忽略 rvm gemset 的文件
+.ruby-gemset
+.ruby-version
