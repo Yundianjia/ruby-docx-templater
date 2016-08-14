@@ -30,6 +30,22 @@ module DocxTemplater
       created_at: '11-12-03 02:01'
     }
   end
+
+  module BrandData
+    DATA = {
+        company: '大真眼有限公司',
+        shop_name: '斜阳西下，三百二十七',
+        shop_id: 122323232323,
+        shop_url: 'http://blog.csdn.net/ruixj/article/details/3765385',
+        master_company: '紫电清爽公司',
+        brand_name: '邪王正眼',
+        START_DATE: (Time.now - 3600 * 24).strftime('%Y年-%m月-%d日'),
+        END_DATE: Time.now.strftime('%Y年-%m月-%d日'),
+        license_number: 1212121212,
+        AUTHORIZED_PARTY: '夏健的夏天',
+        authorized_date: Time.now.strftime('%Y年-%m月-%d日')
+    }
+  end
 end
 
 describe DocxTemplater::TemplateProcessor do

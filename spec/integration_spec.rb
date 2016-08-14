@@ -7,6 +7,11 @@ describe 'integration test', integration: true do
   let(:input_file) { "#{base_path}/ExampleTemplate.docx" }
   let(:output_dir) { "#{base_path}/tmp" }
   let(:output_file) { "#{output_dir}/IntegrationTestOutput.docx" }
+
+  let(:brand_data) { DocxTemplater::BrandData::DATA }
+  let(:brand_input_file) { "#{base_path}/ExampleBrand.docx" }
+  let(:brand_output_file) { "#{output_dir}/IntegrationBrandOutput.docx" }
+
   before do
     FileUtils.rm_rf(output_dir) if File.exist?(output_dir)
     Dir.mkdir(output_dir)
@@ -23,6 +28,22 @@ describe 'integration test', integration: true do
       puts '   >>> Only will work on mac <<<'
       puts 'NOW attempting to open created file in Word.'
       cmd = "open #{output_file}"
+      puts "  will run '#{cmd}'"
+      puts '************************************'
+
+      system cmd
+    end
+
+    it 'generates a valid doc file with brand data' do
+      DocxTemplater::DocxCreator.new(brand_input_file, brand_data).generate_docx_file(brand_output_file)
+
+      archive = Zip::File.open(brand_output_file)
+      archive.close
+
+      puts "\n************************************"
+      puts '   >>> Only will work on mac <<<'
+      puts 'NOW attempting to open created file in Word.'
+      cmd = "open #{brand_output_file}"
       puts "  will run '#{cmd}'"
       puts '************************************'
 

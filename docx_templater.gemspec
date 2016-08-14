@@ -14,10 +14,10 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/jawspeak/ruby-docx-templater'
 
   s.rdoc_options = ['--charset=UTF-8']
-  s.extra_rdoc_files = ['README.rdoc']
+  s.extra_rdoc_files = ['README.md']
 
   s.require_paths = ['lib']
-  root_files = %w(docx_templater.gemspec LICENSE.txt Rakefile README.rdoc .gitignore Gemfile)
+  root_files = %w(docx_templater.gemspec LICENSE.txt Rakefile README.md .gitignore Gemfile)
   s.files = Dir['{lib,script,spec}/**/*'] + root_files
   s.test_files = Dir['spec/**/*']
 
