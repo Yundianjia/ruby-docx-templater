@@ -1,16 +1,73 @@
-{<img src#"https://travis-ci.org/jawspeak/ruby-docx-templater.png" />}[https://travis-ci.org/jawspeak/ruby-docx-templater]
+<img src="https://travis-ci.org/jawspeak/ruby-docx-templater.png" /> [https://travis-ci.org/jawspeak/ruby-docx-templater]
+
+[!](https://travis-ci.org/jawspeak/ruby-docx-templater.png) [https://travis-ci.org/jawspeak/ruby-docx-templater]
+
+# ruby-docx-templater 
+
+Roughly, this takes a .docx file and uses it as a template to create a new docx, with your data
+
+## Installation
+   
+Add this line to your application's Gemfile:
 
 
-# Roughly, this takes a .docx file and uses it as a template to create a new docx, with your data
+```ruby
+gem 'template_docx'
+```
 
-## Features
+Or, 
 
-* All manipulation in memory (great if you have sensitive data)
-* Global key/value substitutions by entering a `$KEY$` anywhere in the word document, with whatever formatting you want.
-* Multi-row loops inside tables, also with whatever your formatting you wish. `#BEGIN_ROW:XYZ#`... `#END_ROW:XYZ#` see tests/example
-* Summation formula for row count `#SUM:XYZ_LIST#`
+```ruby
+
+```
+
+And then execute:
+
+   $ bundle
+
+Or install it yourself as:
+
+   $ gem install aliexpress
 
 ## Usage
+
+
+Command Line: 
+
+```
+Usage: docx-templater [options]
+    -i, --input-file [file]          Default: Example.docx
+    -d, --format-data [data]         Default: data format file, json format - Not Implementation, No Used!!
+    -o, --output-file [file]         Default: OutputTemplate.docx
+    -h, --help                       Show this message
+    -v, --version                    Print version
+```
+
+Program: 
+
+```
+options = {
+  input_file: 'spec/example_input/ExampleBrand.docx'
+  output_file: 'OutputTemplate.docx',
+  data = {
+    company: '伟大的邪王真眼',
+    shop_name: '斜阳西下，三百二十七',
+    shop_id: 122323232323,
+    shop_url: 'http://blog.csdn.net/ruixj/article/details/3765385',
+    master_company: '紫电清爽公司',
+    brand_name: '邪王正眼',
+    start_date: (Time.now - 3600 * 24).strftime('%Y年-%m月-%d日'),
+    end_date: Time.now.strftime('%Y年-%m月-%d日'),
+    license_number: 1212121212,
+    authorized_party: '夏健的夏天',
+    authorized_date: Time.now.strftime('%Y年-%m月-%d日') 
+  }
+}
+
+DocxTemplater.template_docx options
+```
+
+### operatation flow
 
 * Create your docx "template" in Word
 * Install rvm and bundler
@@ -36,6 +93,13 @@ __PRO TIP:__ You don’t want any grammar errors on the template Keys, or they w
 * Install any missing dependencies, then run the test suite: `script/ci`
 * Run the integration test suite (on mac, with word installed): `rake integration`
 * Build the gem file: `gem build docx_templater.gemspec`
+
+## Features
+
+* All manipulation in memory (great if you have sensitive data)
+* Global key/value substitutions by entering a `$KEY$` anywhere in the word document, with whatever formatting you want.
+* Multi-row loops inside tables, also with whatever your formatting you wish. `#BEGIN_ROW:XYZ#`... `#END_ROW:XYZ#` see tests/example
+* Summation formula for row count `#SUM:XYZ_LIST#`
 
 
 ## Future ideas

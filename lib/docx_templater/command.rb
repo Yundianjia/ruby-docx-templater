@@ -21,14 +21,7 @@ module DocxTemplater
     end
 
     def self.generate_doc(options = {})
-      puts "options: #{options}"
-
-      DocxTemplater::DocxCreator.new(options[:input_file], options[:data]).generate_docx_file(options[:output_file])
-
-      archive = Zip::File.open(options[:output_file])
-      archive.close
-
-      DocxTemplater.open_output_file options[:output_file]
+      DocxTemplater.template_docx options
     end
 
     protected
