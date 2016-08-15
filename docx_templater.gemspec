@@ -1,24 +1,21 @@
 # encoding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'docx_templater/version'
 
 Gem::Specification.new do |s|
-  s.name = 'docx_templater'
-  s.version = File.read('lib/VERSION').strip
-
-  s.authors = ['Jonathan Andrew Wolter']
-
-  s.email = 'jaw@jawspeak.com'
-
-  s.date = '2011-12-10'
-  s.description = 'A Ruby library to template Microsoft Word .docx files.'
+  s.name = 'template_docx'
+  s.version = DocxTemplater::VERSION
+  s.authors = ['Jonathan Andrew Wolter', 'xiajian']
+  s.email = ['jaw@jawspeak.com', 'jhqy2011@gmail.com']
+  s.description = 'A Ruby library to template Microsoft Word .docx files. Uses a .docx file with keyword tags within "$$" as a template. '
   s.summary = 'Generates new Word .docx files based on a template file.'
-  s.homepage = 'https://github.com/jawspeak/ruby-docx-templater'
-
-  s.rdoc_options = ['--charset=UTF-8']
-  s.extra_rdoc_files = ['README.md']
-
+  s.homepage = 'https://github.com/Yundianjia/ruby-docx-templater'
+  
   s.require_paths = ['lib']
   root_files = %w(docx_templater.gemspec LICENSE.txt Rakefile README.md .gitignore Gemfile)
-  s.files = Dir['{lib,script,spec}/**/*'] + root_files
+  s.files = Dir['{lib,script,spec,bin}/**/*'] + root_files
   s.test_files = Dir['spec/**/*']
 
   s.add_runtime_dependency('nokogiri')

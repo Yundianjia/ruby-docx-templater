@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'json'
+require 'bundler/setup'
+require 'docx_templater'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: docx-templater [options]"
+
+  opts.on_tail('-h', '--help', 'Show this message') do
+    puts opts
+    exit
+  end
+
+  opts.on_tail('-v', '--version', 'Print version') do
+    puts "docx-templater #{DocxTemplater::VERSION}"
+    exit
+  end
+
+  opts.on('-i', '--input-file [file]', 'Default: Example.docx') do |file|
+    puts "input file: #{file}"
+    options[:input_file] = file || 'Example.docx'
+  end
+
+  opts.on('-d', '--format-data [data]', 'Default: data format file, json format') do |data|
+    unless data
+      options[:data] = {
+          company: '伟大的邪王真眼',
+          shop_name: '斜阳西下，三百二十七',
+          shop_id: 122323232323,
+          shop_url: 'http://blog.csdn.net/ruixj/article/details/3765385',
+          master_company: '紫电清爽公司',
+          brand_name: '邪王正眼',
+          start_date: (Time.now - 3600 * 24).strftime('%Y年-%m月-%d日'),
+          end_date: Time.now.strftime('%Y年-%m月-%d日'),
+          license_number: 1212121212,
+          authorized_party: '夏健的夏天',
+          authorized_date: Time.now.strftime('%Y年-%m月-%d日')
+      }
+    else
+      # 可以选择的 YML 文件，或者 json 文件之类格式化的文件，或者直接就是 Ruby 的 Hash 对象
+    end
+  end
+
+  opts.on('-o', '--output-file [file]', 'Default: OutputTemplate.docx') do |file|
+    puts "input file: #{file}"
+
+    options[:output_file] = file || "OutputTemplate-#{Time.now.strftime('%Y-%m-%d')}.docx"
+  end
+end.parse!
+
+DocxTemplater::Command.generate_doc options

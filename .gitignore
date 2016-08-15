@@ -34,6 +34,11 @@ Gemfile.lock
 # 特定的 docx 文件
 ~*.docx
 **/~*.docx
+Template.docx
+Example.docx
+OutputTemplate.docx
+OutputTemplate-*.docx
+ExampleTemplate_RenderedOutput.docx
 
 *.swo
 *.swp
