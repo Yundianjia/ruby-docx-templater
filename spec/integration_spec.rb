@@ -18,12 +18,8 @@ describe 'integration test', integration: true do
   end
 
   context 'should process in incoming docx' do
-    it 'generates a valid zip file (.docx)' do
-      DocxTemplater::DocxCreator.new(input_file, data).generate_docx_file(output_file)
 
-      archive = Zip::File.open(output_file)
-      archive.close
-
+    def handle_output_file(output_file)
       puts "\n************************************"
       puts '   >>> Only will work on mac <<<'
       puts 'NOW attempting to open created file in Word.'
@@ -34,20 +30,23 @@ describe 'integration test', integration: true do
       system cmd
     end
 
+    # TODO: 这两个生成 DOC 文件的 测试用例，不能同时执行
+    it 'generates a valid zip file (.docx)' do
+      DocxTemplater::DocxCreator.new(input_file, data).generate_docx_file(output_file)
+
+      archive = Zip::File.open(output_file)
+      archive.close
+
+      handle_output_file output_file
+    end
+
     it 'generates a valid doc file with brand data' do
       DocxTemplater::DocxCreator.new(brand_input_file, brand_data).generate_docx_file(brand_output_file)
 
       archive = Zip::File.open(brand_output_file)
       archive.close
 
-      puts "\n************************************"
-      puts '   >>> Only will work on mac <<<'
-      puts 'NOW attempting to open created file in Word.'
-      cmd = "open #{brand_output_file}"
-      puts "  will run '#{cmd}'"
-      puts '************************************'
-
-      system cmd
+      handle_output_file brand_output_file
     end
 
     it 'generates a file with the same contents as the input docx' do

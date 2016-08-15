@@ -30,8 +30,10 @@ tmp/
 spec/example_input/tmp
 docx_templater*gem
 Gemfile.lock
-~*.docx
 
+# 特定的 docx 文件
+~*.docx
+**/~*.docx
 
 *.swo
 *.swp
