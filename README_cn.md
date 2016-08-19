@@ -1,5 +1,3 @@
-{<img src#"https://travis-ci.org/jawspeak/ruby-docx-templater.png" />}[https://travis-ci.org/jawspeak/ruby-docx-templater]
-
 # ruby-docx-templater
 
 `ruby-docx-templater` 大体来说，就是将一个 `.docx` 文件用作模板， 然后，使用你的数据 创建一个新的 docx 文件
@@ -12,7 +10,42 @@
 * 可以在 tables 插入多列循环， 并且，可以格式化成你想要的样式。 详细可以 `spec/example_input`。
 * 计算文档列的总数 `#SUM:XYZ_LIST#`
 
-##  Usage
+## Usage
+
+命令行: 
+
+```
+Usage: docx-templater [options]
+    -i, --input-file [file]          Default: Example.docx
+    -d, --format-data [data]         Default: data format file, json format - Not Implementation, No Used!!
+    -o, --output-file [file]         Default: OutputTemplate.docx
+    -h, --help                       Show this message
+    -v, --version                    Print version
+```
+
+程序使用方式: 
+
+```
+options = {
+  input_file: 'spec/example_input/ExampleBrand.docx'
+  output_file: 'OutputTemplate.docx',
+  data = {
+    company: '伟大的邪王真眼',
+    shop_name: '斜阳西下，三百二十七',
+    shop_id: 122323232323,
+    shop_url: 'http://blog.csdn.net/ruixj/article/details/3765385',
+    master_company: '紫电清爽公司',
+    brand_name: '邪王正眼',
+    start_date: (Time.now - 3600 * 24).strftime('%Y年-%m月-%d日'),
+    end_date: Time.now.strftime('%Y年-%m月-%d日'),
+    license_number: 1212121212,
+    authorized_party: '夏健的夏天',
+    authorized_date: Time.now.strftime('%Y年-%m月-%d日') 
+  }
+}
+
+DocxTemplater.template_docx options
+```
 
 * 在 word 中创建 template docx  
 * 安装 rvm 和 bundler

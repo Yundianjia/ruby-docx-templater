@@ -1,6 +1,6 @@
-<img src="https://travis-ci.org/jawspeak/ruby-docx-templater.png" /> [https://travis-ci.org/jawspeak/ruby-docx-templater]
-
-[!](https://travis-ci.org/jawspeak/ruby-docx-templater.png) [https://travis-ci.org/jawspeak/ruby-docx-templater]
+<a href='https://travis-ci.org/jawspeak/ruby-docx-templater'>
+  <img src="https://travis-ci.org/jawspeak/ruby-docx-templater.png" />
+</a>
 
 # ruby-docx-templater 
 
@@ -17,8 +17,9 @@ gem 'template_docx'
 
 Or, 
 
-```ruby
 
+```ruby
+gem 'template_docx', github: 'xiajian/ruby-docx-templater'
 ```
 
 And then execute:
@@ -27,10 +28,12 @@ And then execute:
 
 Or install it yourself as:
 
-   $ gem install aliexpress
+   $ gem install template_docx
+
 
 ## Usage
 
+[中文文档](https://github.com/Yundianjia/ruby-docx-templater/blob/master/README_cn.md)
 
 Command Line: 
 
@@ -43,7 +46,7 @@ Usage: docx-templater [options]
     -v, --version                    Print version
 ```
 
-Program: 
+Programming: 
 
 ```
 options = {
@@ -67,7 +70,7 @@ options = {
 DocxTemplater.template_docx options
 ```
 
-### operatation flow
+### workflow
 
 * Create your docx "template" in Word
 * Install rvm and bundler
@@ -77,15 +80,19 @@ DocxTemplater.template_docx options
 
 __TECHNICAL NOTE:__ You will probably need to extract and edit the xml template manually after creating in Word, to prepare the ruby script template with it. This is very fiddly / hacky. You can’t have Word’s ugly markup around the fields to template. It will try to break up fields with markup. Test the template, fixing it until the extracted word/document.xml as needed.
 
-I frequently use this workflow:
-`rm -rf word/;   unzip ExampleTemplate.docx  word/document.xml;   mate word/document.xml`
-Grep/search for all $ and # lines and ensure no templating is split with xml markup.
-And then re-add the edited document:
-`zip ExampleTemplate.docx word/document.xml`
+**Workflow**:
+
+1. remove word directory file: `rm -rf word/`
+
+2. unzip example template docx: `unzip ExampleTemplate.docx word/document.xml`
+
+3. edit xml: `vi word/document.xml`
+
+4. Grep/search for all $ and # lines and ensure no templating is split with xml markup.
+And then re-add the edited document: `zip ExampleTemplate.docx word/document.xml`
 
 __PRO TIP:__ You don’t want any grammar errors on the template Keys, or they will not substitute. (Grammar suggestion markup splits up the tokens in the xml). Right click and choose Ignore each grammar error.
 
-[中文文档](https://github.com/Yundianjia/ruby-docx-templater/blob/master/README_cn.md)
 
 
 ## Development
