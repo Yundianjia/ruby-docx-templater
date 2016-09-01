@@ -35,7 +35,9 @@ Or install it yourself as:
 
 [中文文档](https://github.com/Yundianjia/ruby-docx-templater/blob/master/README_cn.md)
 
-Command Line: 
+### Command Line: 
+
+Base Usage
 
 ```
 Usage: docx-templater [options]
@@ -44,6 +46,44 @@ Usage: docx-templater [options]
     -o, --output-file [file]         Default: OutputTemplate.docx
     -h, --help                       Show this message
     -v, --version                    Print version
+```
+
+Usage example:  `docx-templater -i -d tmp/test.json -o`  or  `docx-templater -i -d tmp/test.json -o`
+
+Example yml file: 
+
+```
+---
+:company: 伟大的邪王真眼
+:shop_name: 斜阳西下，三百二十七
+:shop_id: 122323232323
+:shop_url: http://blog.csdn.net/ruixj/article/details/3765385
+:master_company: 紫电清爽公司
+:brand_name: 邪王正眼
+:start_date: 2016年-08月-31日
+:end_date: 2016年-09月-01日
+:license_number: 1212121212
+:authorized_party: 夏健的夏天
+:authorized_date: 2016年-09月-01日
+```
+
+Example json file: 
+
+
+```
+{
+  "company": "伟大的邪王真眼",
+  "shop_name": "斜阳西下，三百二十七",
+  "shop_id": 122323232323,
+  "shop_url": "http://blog.csdn.net/ruixj/article/details/3765385",
+  "master_company": "紫电清爽公司",
+  "brand_name": "邪王正眼",
+  "start_date": "2016年-08月-31日",
+  "end_date": "2016年-09月-01日",
+  "license_number": 1212121212,
+  "authorized_party": "夏健的夏天",
+  "authorized_date": "2016年-09月-01日"
+}
 ```
 
 Programming: 
@@ -92,7 +132,6 @@ __TECHNICAL NOTE:__ You will probably need to extract and edit the xml template 
 And then re-add the edited document: `zip ExampleTemplate.docx word/document.xml`
 
 __PRO TIP:__ You don’t want any grammar errors on the template Keys, or they will not substitute. (Grammar suggestion markup splits up the tokens in the xml). Right click and choose Ignore each grammar error.
-
 
 
 ## Development
