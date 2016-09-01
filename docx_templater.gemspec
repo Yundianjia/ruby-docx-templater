@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   root_files = %w(docx_templater.gemspec LICENSE.txt Rakefile README.md .gitignore Gemfile)
   s.files = Dir['{lib,script,spec,bin}/**/*'] + root_files
   s.test_files = Dir['spec/**/*']
-  s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.executables = ['docx-templater']
   s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency 'nokogiri'
