@@ -50,7 +50,7 @@ Usage: docx-templater [options]
 
 Usage example:  `docx-templater -i -d tmp/test.json -o`  or  `docx-templater -i -d tmp/test.json -o`
 
-Example yml file: 
+[Example yml file](https://raw.githubusercontent.com/xiajian/ruby-docx-templater/master/spec/example_input/brand_input.yml): 
 
 ```
 ---
@@ -67,7 +67,7 @@ Example yml file:
 :authorized_date: 2016年-09月-01日
 ```
 
-Example json file: 
+[Example json file](https://raw.githubusercontent.com/xiajian/ruby-docx-templater/master/spec/example_input/brand_input.json): 
 
 
 ```
