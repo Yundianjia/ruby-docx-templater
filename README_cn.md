@@ -81,6 +81,12 @@ __PRO TIP:__ 不能在替换的模板健那里有任何语法错误，否则他�
 * 在安装了 word 的 mac 上, 运行测试： `rake spec`
 * 构建 gem file: `gem build docx_templater.gemspec`
 
+构建命令行工具，并且使得可以在安装的系统环境中可以访问，需要在 `docx_templater.gemspec` 中，添加如下的代码: 
+
+```
+s.executables = ['docx-templater']
+```
+
 ## 未来的想法
 
 *  将来，使用 word 的 MailMerge 域，代替 自己的 `$KEY_ABC$`， 然后，就不必担心 word 会 在模板健域的文本中，插入莫名其妙的 XML 标记， 比如 #BEGIN_ROW:BLAH#。 这是个不错的注意, 并在添加域的时候，删除这些节点。
